@@ -133,3 +133,32 @@ std::string Neocities::getInfo(const std::string& sitename) {
 
     return response;
 }
+
+std::string Neocities::listFiles(const std::string& path) { // No default argument here
+    CURL *curl;
+    stringstream responseStream;
+    std::string response;
+
+    curl = curl_easy_init();
+    if (curl) {
+        // Construct the URL
+        string url = "https://neocities.org/api/list";
+        if (!path.empty()) {
+            // URL encode the path and append it as a query parameter
+            char* encodedPath = curl_easy_escape(curl, path.c_str(), path.length());
+            url += "?path=" + string(encodedPath);
+            curl_free(encodedPath);
+        }
+
+        // Perform the cURL request
+        if (performCurlRequest(curl, url, nullptr, responseStream, user_ + ":" + password_)) {
+            response = responseStream.str();
+        }
+
+        // Clean up
+        curl_easy_cleanup(curl);
+    }
+
+    return response;
+}
+
