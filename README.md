@@ -58,4 +58,3 @@ std::cout << "All Files: " << allFiles << std::endl;
 std::string pathFiles = site.listFiles("images");
 std::cout << "Files in 'images' directory: " << pathFiles << std::endl;
 ```
-```
