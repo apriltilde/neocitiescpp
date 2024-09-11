@@ -1,10 +1,7 @@
-Sure! Here's the documentation with GitHub syntax highlighting:
-
-```cpp
-// Documentation
+Documentation
 =============================
 
-// The `Neocities` class provides methods to interact with the Neocities API. 
+The `Neocities` class provides methods to interact with the Neocities API. 
 
 ### Setup
 
